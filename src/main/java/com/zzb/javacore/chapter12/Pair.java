@@ -1,6 +1,8 @@
 package com.zzb.javacore.chapter12;
 
+//public class Pair<T extends Persion> {
 public class Pair<T> {
+
     private T first;
     private T second;
 
@@ -29,4 +31,16 @@ public class Pair<T> {
     public void setSecond(T second) {
         this.second = second;
     }
+
+    public static void main(String[] args) {
+        Pair<Persion> pair1 = new Pair<>();
+        Pair<Persion> pair2 = new Pair<>();
+        System.out.println(pair1.getClass() == pair2.getClass());
+    }
+}
+
+class Persion {
+}
+
+class Student extends Persion {
 }
