@@ -32,10 +32,22 @@ public class Pair<T> {
         this.second = second;
     }
 
+    public static <T> Pair<T> makePair(Class<T> cl) {
+        try {
+            return new Pair<>(cl.newInstance(), cl.newInstance());
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         Pair<Persion> pair1 = new Pair<>();
         Pair<Persion> pair2 = new Pair<>();
         System.out.println(pair1.getClass() == pair2.getClass());
+        Pair<String> p = Pair.makePair(String.class);
     }
 }
 

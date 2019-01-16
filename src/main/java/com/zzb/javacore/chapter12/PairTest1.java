@@ -1,5 +1,8 @@
 package com.zzb.javacore.chapter12;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PairTest1 {
     public static void main(String[] args) {
         String[] words = {"Mary", "had", "a", "little", "lamb"};
@@ -7,6 +10,11 @@ public class PairTest1 {
         System.out.println("min is " + mm.getFirst());
         System.out.println("max is " + mm.getSecond());
         double middle = ArrayAlg.getMiddle(3.14, 1729D, 0D);
+        Pair<String>[] table = new Pair[10];
+        List<Pair<String>> list = new ArrayList<>();
+        list.add(new Pair<>());
+        Pair<String> pair = list.get(0);
+        String str = pair.getFirst();
     }
 
 }
