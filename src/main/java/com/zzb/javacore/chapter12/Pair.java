@@ -48,6 +48,10 @@ public class Pair<T> {
         Pair<Persion> pair2 = new Pair<>();
         System.out.println(pair1.getClass() == pair2.getClass());
         Pair<String> p = Pair.makePair(String.class);
+        Pair<Persion> persionPair = new Pair<>(new Persion(), new Student());
+        Pair<? extends Persion> wildPersionPair = persionPair;
+        System.out.println(wildPersionPair.getFirst());
+        System.out.println(wildPersionPair.getSecond());
     }
 }
 
