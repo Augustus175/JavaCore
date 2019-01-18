@@ -20,8 +20,12 @@ public class Employee {
         return bonus;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
-        return "This is Employee " + this.name;
+        return "This is " + this.getClass().getSimpleName() + this.name;
     }
 }

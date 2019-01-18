@@ -1,5 +1,7 @@
 package com.zzb.javacore.chapter12;
 
+import com.zzb.javacore.chapter12.code3.Manager;
+
 //public class Pair<T extends Persion> {
 public class Pair<T> {
 
@@ -50,6 +52,10 @@ public class Pair<T> {
         Pair<String> p = Pair.makePair(String.class);
         Pair<Persion> persionPair = new Pair<>(new Persion(), new Student());
         Pair<? extends Persion> wildPersionPair = persionPair;
+//        wildPersionPair.setFirst(new Object());
+        Pair<? super Student> pair = new Pair<>();
+        pair.setFirst(new Student());
+        Object persion = pair.getFirst();
         System.out.println(wildPersionPair.getFirst());
         System.out.println(wildPersionPair.getSecond());
     }
