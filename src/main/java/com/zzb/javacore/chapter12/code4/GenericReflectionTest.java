@@ -3,6 +3,7 @@ package com.zzb.javacore.chapter12.code4;
 import java.lang.reflect.*;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Collections;
 
 public class GenericReflectionTest {
     public static void main(String[] args) {
@@ -30,10 +31,11 @@ public class GenericReflectionTest {
 
     public static void printClass(Class<?> cl) {
         System.out.print(cl);
+//        class java.util.Collections
         printTypes(cl.getTypeParameters(), "<", " , ", ">", true);
         Type sc = cl.getGenericSuperclass();
         if (sc != null) {
-            System.out.println(" extends ");
+            System.out.print(" extends ");
             printType(sc, false);
         }
         printTypes(cl.getGenericInterfaces(), " implements ", ", ", "", false);
@@ -63,8 +65,9 @@ public class GenericReflectionTest {
         }
         for (int i = 0; i < types.length; i++) {
             if (i > 0) {
-                printType(types[i], isDefinition);
+                System.out.print(sep);
             }
+            printType(types[i], isDefinition);
         }
         if (types.length > 0) {
             System.out.print(suf);
@@ -86,7 +89,7 @@ public class GenericReflectionTest {
         } else if (type instanceof ParameterizedType) {
             ParameterizedType t = (ParameterizedType) type;
             Type owner = t.getOwnerType();
-            if (owner == null) {
+            if (owner != null) {
                 printType(owner, false);
                 System.out.print(".");
             }
@@ -94,9 +97,9 @@ public class GenericReflectionTest {
             printTypes(t.getActualTypeArguments(), "<", ",", ">", false);
         } else if (type instanceof GenericArrayType) {
             GenericArrayType t = (GenericArrayType) type;
-            System.out.println("");
+            System.out.print("");
             printType(t.getGenericComponentType(), isDefinition);
-            System.out.println("[]");
+            System.out.print("[]");
         }
     }
 }
