@@ -16,8 +16,8 @@ public class BallComponent extends JPanel {
         balls.add(ball);
     }
 
-    public void painComponent(Graphics graphics) {
-        super.printComponent(graphics);
+    public void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
         Graphics2D g2 = (Graphics2D) graphics;
         for (Ball b :
                 balls) {

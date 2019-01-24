@@ -24,6 +24,10 @@ class BounceFrame extends JFrame {
         comp = new BallComponent();
         add(comp, BorderLayout.CENTER);
         JPanel buttonPanel = new JPanel();
+        addButton(buttonPanel, "Start", event -> addBall());
+        addButton(buttonPanel, "Close", event -> System.exit(0));
+        add(buttonPanel, BorderLayout.SOUTH);
+        pack();
     }
 
     public void addButton(Container c, String title, ActionListener listener) {
@@ -35,7 +39,7 @@ class BounceFrame extends JFrame {
     public void addBall() {
         Ball ball = new Ball();
         comp.add(ball);
-        for (int i = 0; i < STEPS; i++) {
+        for (int i = 0; i <= STEPS; i++) {
             ball.move(comp.getBounds());
             comp.paint(comp.getGraphics());
             try {
