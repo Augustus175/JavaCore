@@ -39,14 +39,19 @@ class BounceFrame extends JFrame {
     public void addBall() {
         Ball ball = new Ball();
         comp.add(ball);
-        for (int i = 0; i <= STEPS; i++) {
-            ball.move(comp.getBounds());
-            comp.paint(comp.getGraphics());
-            try {
-                Thread.sleep(DELAY);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        Runnable r = () -> {
+
+            for (int i = 0; i <= STEPS; i++) {
+                ball.move(comp.getBounds());
+                comp.paint(comp.getGraphics());
+                try {
+                    Thread.sleep(DELAY);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        };
+        Thread t =  new Thread(r);
+        t.start();
     }
 }
