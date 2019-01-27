@@ -6,7 +6,7 @@ public class MyThread extends Thread {
         while (!Thread.currentThread().isInterrupted()) {
             System.out.println("+++++++++++++");
         }
-        System.out.println("=========================");
+        System.out.println("============");
     }
 
     public static void main(String[] args) {
