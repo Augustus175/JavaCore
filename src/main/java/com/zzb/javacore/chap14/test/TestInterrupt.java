@@ -16,6 +16,7 @@ public class TestInterrupt extends Thread {
 
     public static void main(String[] args) {
         TestInterrupt testInterrupt = new TestInterrupt();
+        System.out.println(testInterrupt.getState());
         testInterrupt.start();
 //        testInterrupt.interrupt();
 //        testInterrupt.interrupt();
