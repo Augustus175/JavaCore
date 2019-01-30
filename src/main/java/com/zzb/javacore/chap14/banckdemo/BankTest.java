@@ -6,7 +6,8 @@ public class BankTest {
 
     public static void main(String[] args) {
 //        Bank bank = new Bank(NACCOUNTS, INITAL_BALANCE);
-        SynchronizedBank bank = new SynchronizedBank(NACCOUNTS, INITAL_BALANCE);
+//        SynchronizedBank bank = new SynchronizedBank(NACCOUNTS, INITAL_BALANCE);
+        ReentrantLockBank bank = new ReentrantLockBank(NACCOUNTS,INITAL_BALANCE);
         for (int i = 0; i < NACCOUNTS; i++) {
             TransferRunnable r = new TransferRunnable(bank, i, INITAL_BALANCE);
             Thread t = new Thread(r);

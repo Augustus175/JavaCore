@@ -2,12 +2,13 @@ package com.zzb.javacore.chap14.banckdemo;
 
 public class TransferRunnable implements Runnable {
     //    private Bank bank;
-    private SynchronizedBank bank;
+//    private SynchronizedBank bank;
+    private ReentrantLockBank bank;
     private int fromAccount;
     private double maxAmount;
     private int DELAY;
 
-    public TransferRunnable(SynchronizedBank bank, int fromAccount, double maxAmount) {
+    public TransferRunnable(ReentrantLockBank bank, int fromAccount, double maxAmount) {
         this.bank = bank;
         this.fromAccount = fromAccount;
         this.maxAmount = maxAmount;
