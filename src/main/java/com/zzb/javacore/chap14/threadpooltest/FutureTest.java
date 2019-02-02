@@ -1,8 +1,7 @@
-package com.zzb.javacore.chap14.banckdemo;
+package com.zzb.javacore.chap14.threadpooltest;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -45,10 +44,10 @@ class MatchCounter implements Callable<Integer> {
     public Integer call() {
         count = 0;
         try {
-
             File[] files = directory.listFiles();
             List<Future<Integer>> results = new ArrayList<>();
-            for (File file : files) {
+            for (File file :
+                    files) {
                 if (file.isDirectory()) {
                     MatchCounter matchCounter = new MatchCounter(file, keyword);
                     FutureTask<Integer> task = new FutureTask<>(matchCounter);
@@ -65,13 +64,12 @@ class MatchCounter implements Callable<Integer> {
                     try {
                         count += result.get();
                     } catch (ExecutionException e) {
-                        e.printStackTrace();
+                     e.printStackTrace();
                     }
-
                 }
             }
         } catch (InterruptedException e) {
-            e.getStackTrace();
+            e.printStackTrace();
         }
         return count;
     }

@@ -1,4 +1,4 @@
-package com.zzb.javacore.chap14.banckdemo;
+package com.zzb.javacore.chap14.threadqueuetest;
 
 import java.io.File;
 import java.io.IOException;
