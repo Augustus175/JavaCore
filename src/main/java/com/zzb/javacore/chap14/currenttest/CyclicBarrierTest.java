@@ -10,7 +10,7 @@ public class CyclicBarrierTest {
         int N = 4;
         CyclicBarrier cyclicBarrier = new CyclicBarrier(N);
         for (int i = 0; i < N; i++) {
-            new Writer(cyclicBarrier).start();
+            new Writer(cyclicBarrier, i * 10000).start();
         }
     }
 
@@ -18,16 +18,17 @@ public class CyclicBarrierTest {
 
 class Writer extends Thread {
     private CyclicBarrier cyclicBarrier;
+    private int pause;
 
-    public Writer(CyclicBarrier cyclicBarrier) {
+    public Writer(CyclicBarrier cyclicBarrier, int pause) {
         this.cyclicBarrier = cyclicBarrier;
+        this.pause = pause;
     }
 
     public void run() {
-        Random random = new Random(100);
         System.out.println("Thread : " + Thread.currentThread().getName() + " writing data !");
         try {
-            Thread.sleep(10 * random.nextInt());
+            Thread.sleep(pause);
             System.out.println("Thread : " + Thread.currentThread().getName() + " done , and " +
                     "wait others .");
             cyclicBarrier.await();
