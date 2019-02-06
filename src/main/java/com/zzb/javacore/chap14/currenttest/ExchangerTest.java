@@ -27,7 +27,9 @@ class Bike extends Thread {
         try {
             Thread.sleep(pause);
             System.out.println("bike done !");
+            Car car = (Car) exchanger.exchange(this);
             System.out.println("now bike exchange " + exchanger.exchange(this));
+            car.printCar();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -35,6 +37,10 @@ class Bike extends Thread {
 
     public String toString() {
         return "the Bike";
+    }
+
+    public void printBike() {
+        System.out.println("This is bike !");
     }
 
 }
@@ -52,7 +58,9 @@ class Car extends Thread {
         try {
             Thread.sleep(pause);
             System.out.println("car done !");
+            Bike bike = (Bike) exchanger.exchange(this);
             System.out.println("now car exchange " + exchanger.exchange(this));
+            bike.printBike();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -60,6 +68,10 @@ class Car extends Thread {
 
     public String toString() {
         return "the Car";
+    }
+
+    public void printCar() {
+        System.out.println("This is bike !");
     }
 
 }
